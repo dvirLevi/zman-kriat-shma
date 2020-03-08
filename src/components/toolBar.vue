@@ -1,0 +1,96 @@
+<template>
+  <nav class="row pb-2 pt-2 row-nav">
+    <div class="col center-all-between">
+      <div class="logo center-all">
+        <img src="../assets/ass2.png" alt="">
+        <p class="mb-0">שמע בזמנה</p>
+      </div>
+      <div class="bar">
+        <div class="circle-bar contain">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<script>
+  // @ is an alias to /src
+  // import HelloWorld from '@/components/HelloWorld.vue
+
+  export default {
+    name: "toolBar",
+    components: {},
+    data() {
+      return {
+
+      };
+    },
+    mounted() {
+
+    },
+    methods: {
+
+    },
+    computed: {
+
+    }
+  };
+</script>
+
+<style scoped>
+  .row {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .row-nav {
+    background-color: #d8e8e8;
+  }
+
+  .logo img {
+    width: 75px;
+  }
+
+  .logo p {
+    color: #083538;
+    font-size: 22px;
+    font-weight: 700;
+    margin-right: -41px;
+    margin-top: 27px;
+
+  }
+
+  .circle-bar {
+    border-radius: 100px;
+    background-color: #aad1d1;
+    width: 75px;
+    height: 75px;
+  }
+
+  .circle-bar:hover {
+    background-color: #84bbbb;
+  }
+
+    .contain {
+          display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+  .bar1,
+  .bar2,
+  .bar3 {
+    width: 45px;
+    height: 5px;
+    background-color: #083538;
+    margin: 3px 0;
+    transition: 0.4s;
+  }
+</style>
