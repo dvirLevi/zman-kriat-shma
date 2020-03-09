@@ -9,16 +9,16 @@
       </div>
       <div class="row center-all-around">
 
-        <div class="col-md-3 right-column" v-if="holidays">
+        <div class="col-md-2 right-column" v-if="holidays">
           <h5 class="text-rigth" v-for="day in holidays" :key="day">{{day}}</h5>
         </div>
         
-        <div class="col-md-3 right-column" v-if="mainHDate.candleLighting() || mainHDate.havdalah()">
+        <div class="col-md-2 right-column" v-if="mainHDate.candleLighting() || mainHDate.havdalah()">
           <h5 class="text-rigth" v-if="mainHDate.candleLighting()">הדלקת נרות: {{new Date(mainHDate.candleLighting()).getHours()}}:{{new Date(mainHDate.candleLighting()).getMinutes()}}</h5>
           <h5 class="text-rigth" v-if="mainHDate.havdalah()">הבדלה: {{new Date(mainHDate.havdalah()).getHours()}}:{{new Date(mainHDate.havdalah()).getMinutes()}}</h5>
         </div>
 
-        <div class="col-md-3 right-column">
+        <div class="col-md-2 right-column">
           <h5 class="text-rigth">חצות: {{new Date(mainHDate.getZemanim().chatzot).getHours()}}:{{new Date(mainHDate.getZemanim().chatzot).getMinutes()}}</h5>
           <h5 class="text-rigth">עלות השחר: {{new Date(mainHDate.getZemanim().alot_hashachar).getHours()}}:{{new Date(mainHDate.getZemanim().alot_hashachar).getMinutes()}}</h5>
           <h5 class="text-rigth">נץ החמה: {{new Date(mainHDate.getZemanim().neitz_hachama).getHours()}}:{{new Date(mainHDate.getZemanim().neitz_hachama).getMinutes()}}</h5>
@@ -26,7 +26,7 @@
           <h5 class="text-rigth">צאת הכוכבים: {{new Date(mainHDate.getZemanim().tzeit).getHours()}}:{{new Date(mainHDate.getZemanim().tzeit).getMinutes()}}</h5>
         </div>
 
-        <div class="col-md-3 right-column">
+        <div class="col-md-2 right-column">
           <h5 class="text-rigth">סוף זמן תפילה גר"א: {{new Date(mainHDate.getZemanim().sof_zman_tfilla).getHours()}}:{{new Date(mainHDate.getZemanim().sof_zman_tfilla).getMinutes()}}</h5>
           <h5 class="text-rigth">מנחה גדולה: {{new Date(mainHDate.getZemanim().mincha_gedola).getHours()}}:{{new Date(mainHDate.getZemanim().mincha_gedola).getMinutes()}}</h5>
           <h5 class="text-rigth">מנחה קטנה: {{new Date(mainHDate.getZemanim().mincha_ketana).getHours()}}:{{new Date(mainHDate.getZemanim().mincha_ketana).getMinutes()}}</h5>

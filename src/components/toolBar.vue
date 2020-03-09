@@ -2,8 +2,8 @@
   <nav class="row pb-2 pt-2 row-nav">
     <div class="col center-all-between">
       <div class="logo center-all">
-        <img src="../assets/ass2.png" alt="">
-        <p class="mb-0">שמע בזמנה</p>
+        <img src="../assets/logo.png" alt="">
+        <!-- <p class="mb-0">שמע בזמנה</p> -->
       </div>
       <div class="bar">
         <div class="circle-bar contain" @click="ifMenu = !ifMenu">
@@ -55,7 +55,7 @@
   }
 
   .logo img {
-    width: 75px;
+    width: 95px;
   }
 
   .logo p {
