@@ -3,7 +3,8 @@
     <div class="col">
       <div class="row ">
         <div class="col center-all mt-3 mb-3">
-          <h3 class="text-center"> זמני היום</h3>
+          <i class="far fa-calendar-alt h3 ml-2"></i>
+          <h3 class="text-center m-0"> זמני היום</h3> 
         </div>
       </div>
       <div class="row center-all-around">

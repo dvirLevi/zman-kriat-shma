@@ -6,26 +6,29 @@
         <p class="mb-0">שמע בזמנה</p>
       </div>
       <div class="bar">
-        <div class="circle-bar contain">
+        <div class="circle-bar contain" @click="ifMenu = !ifMenu">
           <div class="bar1"></div>
           <div class="bar2"></div>
           <div class="bar3"></div>
         </div>
       </div>
+      <menus :ifMenu="ifMenu" @close="ifMenu = !ifMenu" />
     </div>
   </nav>
 </template>
 
 <script>
   // @ is an alias to /src
-  // import HelloWorld from '@/components/HelloWorld.vue
+  import menus from '@/components/menus.vue'
 
   export default {
     name: "toolBar",
-    components: {},
+    components: {
+      menus
+    },
     data() {
       return {
-
+        ifMenu: false
       };
     },
     mounted() {
@@ -65,24 +68,26 @@
   }
 
   .circle-bar {
+    position: relative;
     border-radius: 100px;
     background-color: #aad1d1;
     width: 75px;
     height: 75px;
+    z-index: 2000;
   }
 
   .circle-bar:hover {
     background-color: #84bbbb;
   }
 
-    .contain {
-          display: flex;
+  .contain {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-      cursor: pointer;
-      z-index: 3;
-    }
+    cursor: pointer;
+    z-index: 3;
+  }
 
   .bar1,
   .bar2,

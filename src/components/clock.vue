@@ -155,10 +155,10 @@ top: 40%;
 
   .second {
     position: absolute;
-    height: 65px;
+    height: 116px;
     width: 2px;
     margin: auto;
-    top: -26%;
+    top: -46%;
     left: 0;
     bottom: 0;
     right: 0;
