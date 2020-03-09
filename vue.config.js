@@ -4,7 +4,7 @@ module.exports = {
     pwa: {
       name: 'שמע בזמנה',
       themeColor: '#aad1d1',
-      msTileColor: '#000000',
+      msTileColor: '#aad1d1',
       appleMobileWebAppCapable: 'yes',
       appleMobileWebAppStatusBarStyle: 'black',
   
