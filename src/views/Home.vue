@@ -4,6 +4,8 @@
       <div class="col center-all mt-3 mb-3">
         <h1 class="text-center">סוף זמן קריאת שמע וזמני היום</h1>
         <h3 class="text-center w-100">יום {{dey}} {{Hdate}}</h3>
+        <h3 class="text-center w-100">פרשת {{mainHDate.getSedra('h')[0]}}</h3>
+        
       </div>
     </div>
     <clock />
@@ -18,6 +20,7 @@
       </div>
     </div>
     <dayTime />
+    <!-- {{sunrise}} -->
   </div>
 </template>
 
@@ -25,7 +28,7 @@
   // @ is an alias to /src
   import clock from '@/components/clock.vue'
   import dayTime from '@/components/dayTime.vue'
-  import Hebcal from "hebcal";
+  // import Hebcal from "hebcal";
   import * as KosherZmanim from "kosher-zmanim";
 
   export default {
@@ -36,7 +39,7 @@
     },
     data() {
       return {
-days: ["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת",]
+        days: ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת", ],
       };
     },
     computed: {
@@ -57,21 +60,37 @@ days: ["ראשון","שני","שלישי","רביעי","חמישי","שישי","
         );
       },
       Hdate() {
-        return new Hebcal.HDate().toString('h');
+        return this.mainHDate.toString('h');
       },
       dey() {
-         return this.days[new Date().getDay()]
+        return this.days[this.mainDate.getDay()]
       },
       options() {
-        return this.$store.state.options
-      }
+        return this.$store.getters.options
+      },
+      mainDate() {
+        return this.$store.state.mainDate;
+      },
+      // mainHebcal() {
+      //   return this.$store.getters.mainHebcal;
+      // },
+      // cities() {
+      //   let sad = new Hebcal.cities.listCities();
+      //   return sad
+      // },
+      // sunrise(){
+      //    return this.mainHDate.sunrise()
+      // },
+      mainHDate() {
+        return this.$store.getters.mainHDate;
+      },
     }
   };
 </script>
 
 <style scoped>
   .title-row {
-    background-color: #ff5959;
+    background-color: #ff5959e8;
     color: #fff;
   }
 
@@ -81,7 +100,7 @@ days: ["ראשון","שני","שלישי","רביעי","חמישי","שישי","
     margin-top: 2px;
   }
 
-   .while-row .mga {
+  .while-row .mga {
     border-left: solid 1px #fff;
   }
 
@@ -94,12 +113,14 @@ days: ["ראשון","שני","שלישי","רביעי","חמישי","שישי","
   }
 
   @media (max-width: 767.98px) {
-     .while-row .mga {
-    border-left: none;
-  }
+    .while-row .mga {
+      border-left: none;
+      border-bottom: solid 1px #fff;
+    }
 
-  .while-row .gra {
-    border-right: none;
-  }
+    .while-row .gra {
+      border-right: none;
+      border-top: solid 1px #fff;
+    }
   }
 </style>
