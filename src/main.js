@@ -5,6 +5,7 @@ import store from './store'
 
 import "../style/bootstrap.min.css"
 import "../style/global.css"
+import './registerServiceWorker'
 
 
 
