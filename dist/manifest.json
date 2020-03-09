@@ -1,6 +1,6 @@
 {
-    "name": "שמע בזמנה",
-    "short_name": "שמע בזמנה",
+    "name": "zman-kriat-shma",
+    "short_name": "zman-kriat-shma",
     "theme_color": "#aad1d1",
     "icons": [{
         "src": "./img/icons/android-chrome-192x192.png",
