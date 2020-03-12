@@ -19,6 +19,7 @@
         <h3 class="h1 mt-3 mb-5">{{ SofZmanShmaGRA }}</h3>
       </div>
     </div>
+    <!-- {{getMga}} -->
     <dayTime />
     <!-- {{sunrise}} -->
   </div>
@@ -40,6 +41,15 @@
     data() {
       return {
         days: ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת", ],
+      //   optionss : {
+      //   date: new Date(2020, 3, 8),
+      //   timeZoneId: "Asia/Jerusalem",
+      //   locationName: "Asia/Jerusalem",
+      //   latitude: 31.788210,
+      //   longitude: 35.185045,
+      //   elevation: 800,
+      //   complexZmanim: true
+      // }
       };
     },
     computed: {
@@ -71,6 +81,56 @@
       mainDate() {
         return this.$store.state.mainDate;
       },
+      // getMga() {
+      //   let HalotHashachar = new Date(this.mainHDate.getZemanim().alot_hashachar).getHours() ;
+      //   let MalotHashachar = (new Date(this.mainHDate.getZemanim().alot_hashachar).getMinutes());
+      //   console.log(MalotHashachar)
+
+      //   // let HafterShkia = new Date(this.mainHDate.getZemanim().shkiah).getHours() + 1 ;
+      //   // let MafterShkia = ((new Date(this.mainHDate.getZemanim().shkiah).getMinutes() + 72 - 60) / 12)*3;
+      //   let mmm = (1/100) * (100 / 60) * MalotHashachar;
+      //   let Htime = (((this.Htzeit - HalotHashachar) + mmm ) / 12) * 3; 
+      //   console.log(Htime)
+
+      //   let difH = Math.floor(Htime)
+      //   let difM = (Htime - difH) * (60)
+
+      //   let m =  this.Mtzeit + difM;
+
+      //   if(m >= 59){
+      //     let divM = Math.floor(m / 60);
+      //     m = m - (divM * 60);
+
+
+      //     difH = difH + divM
+      //   }
+      //  return HalotHashachar + difH + ":" + m 
+      // },
+      // Htzeit() {
+      //   let m = new Date(this.mainHDate.getZemanim().shkiah).getMinutes() + 18;
+      //   let h = new Date(this.mainHDate.getZemanim().shkiah).getHours();
+      //   if (m >= 59) {
+      //     h = h + 1;
+      //     m = m - 60;
+      //   }
+      //   return h
+      // },
+      // Mtzeit() {
+      //   let m = new Date(this.mainHDate.getZemanim().shkiah).getMinutes() + 18;
+      //   // let h = new Date(this.mainHDate.getZemanim().shkiah).getHours();
+      //   if (m >= 59) {
+      //     // h = h + 1;
+      //     m = m - 60;
+      //   }
+      //   return m
+      // },
+      //   asd() {
+      //   const zmanim =  new KosherZmanim.JewishCalendar();
+      //   // let day = new KosherZmanim.HebrewDateFormatter()
+      //   console.log(zmanim)
+      //   // return zmanim
+      //   return zmanim
+      // },
       // mainHebcal() {
       //   return this.$store.getters.mainHebcal;
       // },

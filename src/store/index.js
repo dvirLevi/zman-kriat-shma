@@ -6,11 +6,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    // mainDate: new Date(2020, 3, 8),
+    // mainDate: new Date(2020, 4, 8),
     mainDate: new Date(),
     coordinates: {
-      latitude: 31,
-      longitude: 35
+      latitude: 31.788210,
+      longitude: 35.185045
     }
   },
   getters: {
