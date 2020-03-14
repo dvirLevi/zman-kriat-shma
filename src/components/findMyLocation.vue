@@ -2,11 +2,11 @@
   <div class="w-100 center-all">
     <div class="butt p-2 c-p center-all m-1" @click="getLocation">
       <i class="fas fa-map-marker-alt m-2"></i>
-      <p class="m-0">הצג זמנים לפי מיקום שלי</p>
+      <p class="m-0">מצא את המיקום שלי</p>
     </div>
     <div class="butt p-2 c-p center-all m-1">
       <i class="fas fa-map-marked-alt m-2"></i>
-      <p class="m-0">הצג מפה</p>
+      <p class="m-0">הצג מיקום נוכחי ע"ג מפה</p>
     </div>
   </div>
 </template>

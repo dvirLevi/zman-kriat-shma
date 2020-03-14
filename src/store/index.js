@@ -9,8 +9,8 @@ export default new Vuex.Store({
     // mainDate: new Date(2020, 2, 20),
     mainDate: new Date(),
     coordinates: {
-      latitude: 31.788210,
-      longitude: 35.185045,
+      latitude: 31.777980,
+      longitude: 35.235353,
       altitude: null
     }
   },
