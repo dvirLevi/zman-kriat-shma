@@ -9,6 +9,8 @@
       </div>
     </div>
     <clock />
+    <findLocation />
+    <myMap />
     <div class="row while-row">
       <div class="col-md-6 center-all mga">
         <h4 class="w-100 mt-5 text-center">סוף זמן קריאת שמע לשיטת המגן אברהם</h4>
@@ -19,9 +21,7 @@
         <h3 class="h1 mt-3 mb-5">{{ SofZmanShmaGRA }}</h3>
       </div>
     </div>
-    <!-- {{getMga}} -->
     <dayTime />
-    <!-- {{sunrise}} -->
   </div>
 </template>
 
@@ -29,6 +29,8 @@
   // @ is an alias to /src
   import clock from '@/components/clock.vue'
   import dayTime from '@/components/dayTime.vue'
+  import myMap from '@/components/myMap.vue'
+  import findLocation from '@/components/findLocation.vue'
   // import Hebcal from "hebcal";
   import * as KosherZmanim from "kosher-zmanim";
 
@@ -36,37 +38,32 @@
     name: "Home",
     components: {
       clock,
-      dayTime
+      dayTime,
+      findLocation,
+      myMap
     },
     data() {
       return {
         days: ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת", ],
-      //   optionss : {
-      //   date: new Date(2020, 3, 8),
-      //   timeZoneId: "Asia/Jerusalem",
-      //   locationName: "Asia/Jerusalem",
-      //   latitude: 31.788210,
-      //   longitude: 35.185045,
-      //   elevation: 800,
-      //   complexZmanim: true
-      // }
+     
       };
     },
     computed: {
       SofZmanShmaMGA() {
         const zmanim = KosherZmanim.getZmanimJson(this.options);
+        // console.log(zmanim)
         return (
-          new Date(zmanim.BasicZmanim.SofZmanShmaMGA).getHours() +
+          new Date(zmanim.Zmanim.SofZmanShmaMGA).getHours() +
           ":" +
-          new Date(zmanim.BasicZmanim.SofZmanShmaMGA).getMinutes()
+          new Date(zmanim.Zmanim.SofZmanShmaMGA).getMinutes()
         );
       },
       SofZmanShmaGRA() {
         const zmanim = KosherZmanim.getZmanimJson(this.options);
         return (
-          new Date(zmanim.BasicZmanim.SofZmanShmaGRA).getHours() +
+          new Date(zmanim.Zmanim.SofZmanShmaGRA).getHours() +
           ":" +
-          new Date(zmanim.BasicZmanim.SofZmanShmaGRA).getMinutes()
+          new Date(zmanim.Zmanim.SofZmanShmaGRA).getMinutes()
         );
       },
       Hdate() {
@@ -124,13 +121,7 @@
       //   }
       //   return m
       // },
-      //   asd() {
-      //   const zmanim =  new KosherZmanim.JewishCalendar();
-      //   // let day = new KosherZmanim.HebrewDateFormatter()
-      //   console.log(zmanim)
-      //   // return zmanim
-      //   return zmanim
-      // },
+       
       // mainHebcal() {
       //   return this.$store.getters.mainHebcal;
       // },

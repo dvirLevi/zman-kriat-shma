@@ -4,7 +4,7 @@
     <router-view/>
     <div class="row">
       <div class="col center-all pt-2 pb-2 app-life">
-      <h4 class="m-0">נבנה ופותח ב<a href="https://apps-life.netlify.com/#/">AppsLife</a></h4>
+      <h4 class="m-0">נבנה ופותח ב<a href="https://apps-life.netlify.com/#/" target="_blanc">AppsLife</a></h4>
     </div>
     </div>
   </div>
@@ -29,5 +29,14 @@
 </script>
 
 <style>
-
+h4 a {
+  color: #da6464;
+    text-decoration: underline;
+    cursor: pointer;
+}
+h4 a:hover {
+  color: #da6464;
+    text-decoration: underline;
+    cursor: pointer;
+}
 </style>

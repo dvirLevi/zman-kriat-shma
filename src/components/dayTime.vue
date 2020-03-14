@@ -8,17 +8,21 @@
         </div>
       </div>
       <div class="row center-top">
-        <div class="col-md-3 right-column" v-if="holidays.length">
+        <!-- <div class="col-md-3 right-column" v-if="holidays.length">
           <h5 class="text-rigth" v-for="day in holidays" :key="day">{{day}}</h5>
-        </div>
+        </div> -->
 
-        <div class="col-md-3 right-column" v-if="mainHDate.candleLighting() || mainHDate.havdalah()">
-          <div class="w-100 center-all">
+        <div class="col-md-3 right-column" >
+          <template v-if="holidays.length">
+            <h5 class="text-rigth" v-for="day in holidays" :key="day">{{day}}</h5>
+          </template>
+          <template v-if="mainHDate.candleLighting() || mainHDate.havdalah()">
+            <div class="w-100 center-all">
             <h5 class="w-50 text-rigth">
               הדלקת נרות:
             </h5>
             <h5 class="w-50 text-rigth">
-              {{new Date(mainHDate.candleLighting()).getHours()}}:{{new Date(mainHDate.candleLighting()).getMinutes()}}
+              {{getHours(zmanim.CandleLighting)}}:{{getMinutes(zmanim.CandleLighting)}}
             </h5>
           </div>
 
@@ -27,9 +31,10 @@
               הבדלה:
             </h5>
             <h5 class="w-50 text-rigth">
-              {{new Date(mainHDate.havdalah()).getHours()}}:{{new Date(mainHDate.havdalah()).getMinutes()}}
+              {{getHours(zmanim.Tzais)}}:{{getMinutes(zmanim.Tzais)}}
             </h5>
           </div>
+          </template>
         </div>
 
         <div class="col-md-3 right-column">
@@ -38,16 +43,16 @@
               חצות:
             </h5>
             <h5 class="w-50 text-rigth">
-              {{new Date(mainHDate.getZemanim().chatzot).getHours()}}:{{new Date(mainHDate.getZemanim().chatzot).getMinutes()}}
+              {{getHours(zmanim.Chatzos)}}:{{getMinutes(zmanim.Chatzos)}}
             </h5>
           </div>
 
           <div class="w-100 center-all">
             <h5 class="w-50 text-rigth">
-              זריחה:
+              עלות השחר:
             </h5>
             <h5 class="w-50 text-rigth">
-              {{new Date(mainHDate.getZemanim().alot_hashachar).getHours()}}:{{new Date(mainHDate.getZemanim().alot_hashachar).getMinutes()}}
+              {{getHours(zmanim.Alos72)}}:{{getMinutes(zmanim.Alos72)}}
             </h5>
           </div>
 
@@ -56,7 +61,7 @@
               נץ החמה:
             </h5>
             <h5 class="w-50 text-rigth">
-              {{new Date(mainHDate.getZemanim().neitz_hachama).getHours()}}:{{new Date(mainHDate.getZemanim().neitz_hachama).getMinutes()}}
+              {{getHours(zmanim.Sunrise)}}:{{getMinutes(zmanim.Sunrise)}}
             </h5>
           </div>
 
@@ -65,7 +70,7 @@
               שקיעה:
             </h5>
             <h5 class="w-50 text-rigth">
-              {{new Date(mainHDate.getZemanim().shkiah).getHours()}}:{{new Date(mainHDate.getZemanim().shkiah).getMinutes()}}
+              {{getHours(zmanim.Sunset)}}:{{getMinutes(zmanim.Sunset)}}
             </h5>
           </div>
 
@@ -74,7 +79,7 @@
               צאת הכוכבים:
             </h5>
             <h5 class="w-50 text-rigth">
-              {{tzeit}}
+              {{getHours(zmanim.TzaisGeonim4Point8Degrees)}}:{{getMinutes(zmanim.TzaisGeonim4Point8Degrees)}}
             </h5>
           </div>
 
@@ -83,10 +88,19 @@
         <div class="col-md-3 right-column">
           <div class="w-100 center-all">
             <h5 class="w-50 text-rigth">
+              סוף זמן תפילה מג"א:
+            </h5>
+            <h5 class="w-50 text-rigth">
+             {{getHours(zmanim.SofZmanTfilaMGA)}}:{{getMinutes(zmanim.SofZmanTfilaMGA)}}
+            </h5>
+          </div>
+
+          <div class="w-100 center-all">
+            <h5 class="w-50 text-rigth">
               סוף זמן תפילה גר"א:
             </h5>
             <h5 class="w-50 text-rigth">
-              {{new Date(mainHDate.getZemanim().sof_zman_tfilla).getHours()}}:{{new Date(mainHDate.getZemanim().sof_zman_tfilla).getMinutes()}}
+             {{getHours(zmanim.SofZmanTfilaGRA)}}:{{getMinutes(zmanim.SofZmanTfilaGRA)}}
             </h5>
           </div>
 
@@ -95,7 +109,7 @@
               מנחה גדולה:
             </h5>
             <h5 class="w-50 text-rigth">
-              {{new Date(mainHDate.getZemanim().mincha_gedola).getHours()}}:{{new Date(mainHDate.getZemanim().mincha_gedola).getMinutes()}}
+              {{getHours(zmanim.MinchaGedola)}}:{{getMinutes(zmanim.MinchaGedola)}}
             </h5>
           </div>
 
@@ -104,30 +118,29 @@
               מנחה קטנה:
             </h5>
             <h5 class="w-50 text-rigth">
-              {{new Date(mainHDate.getZemanim().mincha_ketana).getHours()}}:{{new Date(mainHDate.getZemanim().mincha_ketana).getMinutes()}}
+              {{getHours(zmanim.MinchaKetana)}}:{{getMinutes(zmanim.MinchaKetana)}}
             </h5>
           </div>
 
           <div class="w-100 center-all">
             <h5 class="w-50 text-rigth">
               פלג המנחה:
-            </h5>
+            </h5>   
             <h5 class="w-50 text-rigth">
-              {{new Date(mainHDate.getZemanim().plag_hamincha).getHours()}}:{{new Date(mainHDate.getZemanim().plag_hamincha).getMinutes()}}
+              {{getHours(zmanim.PlagHamincha)}}:{{getMinutes(zmanim.PlagHamincha)}}
             </h5>
           </div>
-
         </div>
-
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
   // @ is an alias to /src
   // import HelloWorld from '@/components/HelloWorld.vue
-  // import * as KosherZmanim from "kosher-zmanim";
+  import * as KosherZmanim from "kosher-zmanim";
 
   export default {
     name: "dayTime",
@@ -141,7 +154,14 @@
 
     },
     methods: {
-
+      getHours(date) {
+        let h = new Date(date).getHours()
+        return (h.toString().length <= 1) ? "0" + h : h;
+      },
+      getMinutes(date) {
+        let m = new Date(date).getMinutes()
+        return (m.toString().length <= 1) ? "0" + m : m;
+      },
     },
     computed: {
       tzeit() {
@@ -166,6 +186,14 @@
         }
         return arr
       },
+       options() {
+        return this.$store.getters.options
+      },
+      zmanim() {
+        const zmanim = KosherZmanim.getZmanimJson(this.options);
+        return zmanim.Zmanim
+      }
+
     }
   };
 </script>

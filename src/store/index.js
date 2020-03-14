@@ -6,11 +6,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    // mainDate: new Date(2020, 4, 8),
+    // mainDate: new Date(2020, 2, 20),
     mainDate: new Date(),
     coordinates: {
       latitude: 31.788210,
-      longitude: 35.185045
+      longitude: 35.185045,
+      altitude: null
     }
   },
   getters: {
@@ -22,39 +23,27 @@ export default new Vuex.Store({
         latitude: 31,
         longitude: 35,
         elevation: 0,
-        complexZmanim: false
+        complexZmanim: true
       }
       options.date = state.mainDate;
       options.latitude = state.coordinates.latitude;
       options.longitude = state.coordinates.longitude;
+      options.elevation = state.coordinates.altitude;
       return options
     },
-    // mainHebcal: state => {
-    //   let hebcal = new Hebcal(state.mainDate)
-    //   return hebcal
-    // },
     mainHDate: state => {
       let hebcal = new Hebcal.HDate(state.mainDate);
       hebcal.setLocation(state.coordinates.latitude, state.coordinates.longitude)
       return hebcal
     },
-    // Moptions: state => {
-    //   let options = {
-    //     date: new Date(),
-    //     timeZoneId: "Asia/Jerusalem",
-    //     locationName: "Asia/Jerusalem",
-    //     latitude: 31,
-    //     longitude: 35,
-    //     elevation: 0,
-    //     complexZmanim: true
-    //   }
-    //   options.date = state.mainDate;
-    //   options.latitude = state.coordinates.latitude;
-    //   options.longitude = state.coordinates.longitude;
-    //   return options
-    // },
   },
-  mutations: {},
+  mutations: {
+    setPosition(state, position) {
+      state.coordinates.latitude = position.coords.latitude;
+      state.coordinates.longitude = position.coords.longitude;
+      state.coordinates.altitude = position.coords.altitude;
+    },
+  },
   actions: {},
   modules: {}
 })
