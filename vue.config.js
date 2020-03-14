@@ -5,5 +5,8 @@ module.exports = {
         name: 'קש בזמנה זמני היום',
         themeColor: '#aad1d1',
         msTileColor: '#aad1d1',
+        workboxOptions: {
+            skipWaiting: true
+        }
     }
 }
