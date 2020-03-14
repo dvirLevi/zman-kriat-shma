@@ -1,6 +1,6 @@
 <template>
   <div class="row time-row pb-3 pt-3">
-    <div class="col-md-6 center-all">
+    <div class="col center-all">
       <findMyLocation />
     </div>
   </div>

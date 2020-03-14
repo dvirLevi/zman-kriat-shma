@@ -12,7 +12,7 @@
           <h5 class="text-rigth" v-for="day in holidays" :key="day">{{day}}</h5>
         </div> -->
 
-        <div class="col-md-3 right-column" >
+        <div class="col-md-3 right-column" v-if="mainHDate.candleLighting() || mainHDate.havdalah() || holidays.length">
           <template v-if="holidays.length">
             <h5 class="text-rigth" v-for="day in holidays" :key="day">{{day}}</h5>
           </template>
