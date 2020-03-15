@@ -132,6 +132,8 @@
           </div>
         </div>
       </div>
+      <installApp />
+
     </div>
 
   </div>
@@ -139,12 +141,14 @@
 
 <script>
   // @ is an alias to /src
-  // import HelloWorld from '@/components/HelloWorld.vue
+  import installApp from '@/components/installApp.vue'
   import * as KosherZmanim from "kosher-zmanim";
 
   export default {
     name: "dayTime",
-    components: {},
+    components: {
+      installApp
+    },
     data() {
       return {
 

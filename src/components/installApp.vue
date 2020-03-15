@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <button ref="addButton">ERTERT</button>
+  <div class="row" v-show="ifShow">
+    <div class="col center-all border-top pt-3 mt-3">
+      <div ref="addButton" class="butt center-all p-2 c-p ">
+        <i class="fas fa-cogs m-2"></i>
+        <p class="m-0">להתקנת האפליקצייה לחץ כאן</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,19 +14,20 @@
   import Swal from 'sweetalert2'
 
   export default {
-    name: "Home",
+    name: "installApp",
     components: {
 
     },
     data() {
       return {
-
+        ifShow: false
       };
     },
     mounted() {
       let deferredPrompt;
       const addBtn = this.$refs.addButton;
       addBtn.style.display = 'none';
+      this.ifShow = false;
 
       window.addEventListener('beforeinstallprompt', (e) => {
         // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -30,11 +36,13 @@
         deferredPrompt = e;
         // Update UI to notify the user they can add to home screen
         addBtn.style.display = 'block';
+        this.ifShow = true;
 
         addBtn.addEventListener('click', () => {
           // hide our user interface that shows our A2HS button
           // console.log(e)
           addBtn.style.display = 'none';
+          this.ifShow = false;
           // Show the prompt
           deferredPrompt.prompt();
           // Wait for the user to respond to the prompt
@@ -54,7 +62,6 @@
                 timer: 1500
               });
             }
-
             deferredPrompt = null;
           });
         });
@@ -67,38 +74,16 @@
 </script>
 
 <style scoped>
-  .title-row {
-    background-color: #ff5959e8;
+  .butt {
+    background-color: #ff6868;
+    border-radius: 5px;
     color: #fff;
+    width: 300px;
+    font-size: 20px;
+    font-weight: 100;
+    /* margin-top: 2px; */
   }
 
-  .while-row {
-    color: #083538;
-    background-color: #facf5a;
-    margin-top: 2px;
-  }
 
-  .while-row .mga {
-    border-left: solid 1px #fff;
-  }
-
-  .while-row .gra {
-    border-right: solid 1px #fff;
-  }
-
-  .while-row h3 {
-    font-size: 65px;
-  }
-
-  @media (max-width: 767.98px) {
-    .while-row .mga {
-      border-left: none;
-      border-bottom: solid 1px #fff;
-    }
-
-    .while-row .gra {
-      border-right: none;
-      border-top: solid 1px #fff;
-    }
-  }
+  @media (max-width: 767.98px) {}
 </style>

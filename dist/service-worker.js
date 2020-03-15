@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.fd1c128e8ca7140d8ca7c2e7d289ecb6.js"
+  "/precache-manifest.89ca6ff4204968f71b64ba0eed0faf21.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "zman-kriat-shma"});
