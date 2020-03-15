@@ -1,11 +1,9 @@
 <template>
   <div class="row" v-show="ifShow">
     <div class="col center-all border-top pt-3 mt-3">
-      <div ref="addButton" class="butt p-2 c-p ">
-        <div class="w-100 center-all">
-          <i class="fas fa-cogs m-2"></i>
-          <p class="m-0">התקנת האפליקצייה</p>
-        </div>
+      <div ref="addButton" class="butt center-all p-2 c-p ">
+        <i class="fas fa-cogs m-2"></i>
+        <p class="m-0">להתקנת האפליקצייה לחץ כאן</p>
       </div>
     </div>
   </div>
@@ -28,7 +26,7 @@
     mounted() {
       let deferredPrompt;
       const addBtn = this.$refs.addButton;
-      addBtn.style.display = 'none';
+      // addBtn.style.display = 'none';
       this.ifShow = false;
 
       window.addEventListener('beforeinstallprompt', (e) => {
@@ -37,13 +35,13 @@
         // Stash the event so it can be triggered later.
         deferredPrompt = e;
         // Update UI to notify the user they can add to home screen
-        addBtn.style.display = 'block';
+        // addBtn.style.display = 'block';
         this.ifShow = true;
 
         addBtn.addEventListener('click', () => {
           // hide our user interface that shows our A2HS button
           // console.log(e)
-          addBtn.style.display = 'none';
+          // addBtn.style.display = 'none';
           this.ifShow = false;
           // Show the prompt
           deferredPrompt.prompt();
@@ -80,7 +78,7 @@
     background-color: #ff6868;
     border-radius: 5px;
     color: #fff;
-    width: 310px;
+    width: 270px;
     font-size: 20px;
     font-weight: 100;
     /* margin-top: 2px; */
