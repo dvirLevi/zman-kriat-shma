@@ -1,9 +1,11 @@
 <template>
   <div class="row" v-show="ifShow">
     <div class="col center-all border-top pt-3 mt-3">
-      <div ref="addButton" class="butt center-all p-2 c-p ">
-        <i class="fas fa-cogs m-2"></i>
-        <p class="m-0">התקנת האפליקצייה</p>
+      <div ref="addButton" class="butt p-2 c-p ">
+        <div class="w-100 center-all">
+          <i class="fas fa-cogs m-2"></i>
+          <p class="m-0">התקנת האפליקצייה</p>
+        </div>
       </div>
     </div>
   </div>
