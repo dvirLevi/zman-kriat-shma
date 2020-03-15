@@ -18,22 +18,22 @@
           </template>
           <template v-if="mainHDate.candleLighting() || mainHDate.havdalah()">
             <div class="w-100 center-all">
-            <h5 class="w-50 text-rigth">
-              הדלקת נרות:
-            </h5>
-            <h5 class="w-50 text-rigth">
-              {{getHours(zmanim.CandleLighting)}}:{{getMinutes(zmanim.CandleLighting)}}
-            </h5>
-          </div>
+              <h5 class="w-50 text-rigth">
+                הדלקת נרות:
+              </h5>
+              <h5 class="w-50 text-rigth">
+                {{getHours(zmanim.CandleLighting)}}:{{getMinutes(zmanim.CandleLighting)}}
+              </h5>
+            </div>
 
-          <div class="w-100 center-all">
-            <h5 class="w-50 text-rigth">
-              הבדלה:
-            </h5>
-            <h5 class="w-50 text-rigth">
-              {{getHours(zmanim.Tzais)}}:{{getMinutes(zmanim.Tzais)}}
-            </h5>
-          </div>
+            <div class="w-100 center-all">
+              <h5 class="w-50 text-rigth">
+                הבדלה:
+              </h5>
+              <h5 class="w-50 text-rigth">
+                {{getHours(zmanim.Tzais)}}:{{getMinutes(zmanim.Tzais)}}
+              </h5>
+            </div>
           </template>
         </div>
 
@@ -42,7 +42,7 @@
             <h5 class="w-50 text-rigth">
               חצות:
             </h5>
-            <h5 class="w-50 text-rigth">
+            <h5 class="w-50 text-center">
               {{getHours(zmanim.Chatzos)}}:{{getMinutes(zmanim.Chatzos)}}
             </h5>
           </div>
@@ -51,7 +51,7 @@
             <h5 class="w-50 text-rigth">
               עלות השחר:
             </h5>
-            <h5 class="w-50 text-rigth">
+            <h5 class="w-50 text-center">
               {{getHours(zmanim.Alos72)}}:{{getMinutes(zmanim.Alos72)}}
             </h5>
           </div>
@@ -60,7 +60,7 @@
             <h5 class="w-50 text-rigth">
               נץ החמה:
             </h5>
-            <h5 class="w-50 text-rigth">
+            <h5 class="w-50 text-center">
               {{getHours(zmanim.Sunrise)}}:{{getMinutes(zmanim.Sunrise)}}
             </h5>
           </div>
@@ -69,7 +69,7 @@
             <h5 class="w-50 text-rigth">
               שקיעה:
             </h5>
-            <h5 class="w-50 text-rigth">
+            <h5 class="w-50 text-center">
               {{getHours(zmanim.Sunset)}}:{{getMinutes(zmanim.Sunset)}}
             </h5>
           </div>
@@ -78,7 +78,7 @@
             <h5 class="w-50 text-rigth">
               צאת הכוכבים:
             </h5>
-            <h5 class="w-50 text-rigth">
+            <h5 class="w-50 text-center">
               {{getHours(zmanim.TzaisGeonim4Point8Degrees)}}:{{getMinutes(zmanim.TzaisGeonim4Point8Degrees)}}
             </h5>
           </div>
@@ -90,8 +90,8 @@
             <h5 class="w-50 text-rigth">
               סוף זמן תפילה מג"א:
             </h5>
-            <h5 class="w-50 text-rigth">
-             {{getHours(zmanim.SofZmanTfilaMGA)}}:{{getMinutes(zmanim.SofZmanTfilaMGA)}}
+            <h5 class="w-50 text-center">
+              {{getHours(zmanim.SofZmanTfilaMGA)}}:{{getMinutes(zmanim.SofZmanTfilaMGA)}}
             </h5>
           </div>
 
@@ -99,8 +99,8 @@
             <h5 class="w-50 text-rigth">
               סוף זמן תפילה גר"א:
             </h5>
-            <h5 class="w-50 text-rigth">
-             {{getHours(zmanim.SofZmanTfilaGRA)}}:{{getMinutes(zmanim.SofZmanTfilaGRA)}}
+            <h5 class="w-50 text-center">
+              {{getHours(zmanim.SofZmanTfilaGRA)}}:{{getMinutes(zmanim.SofZmanTfilaGRA)}}
             </h5>
           </div>
 
@@ -108,7 +108,7 @@
             <h5 class="w-50 text-rigth">
               מנחה גדולה:
             </h5>
-            <h5 class="w-50 text-rigth">
+            <h5 class="w-50 text-center">
               {{getHours(zmanim.MinchaGedola)}}:{{getMinutes(zmanim.MinchaGedola)}}
             </h5>
           </div>
@@ -117,7 +117,7 @@
             <h5 class="w-50 text-rigth">
               מנחה קטנה:
             </h5>
-            <h5 class="w-50 text-rigth">
+            <h5 class="w-50 text-center">
               {{getHours(zmanim.MinchaKetana)}}:{{getMinutes(zmanim.MinchaKetana)}}
             </h5>
           </div>
@@ -125,8 +125,8 @@
           <div class="w-100 center-all">
             <h5 class="w-50 text-rigth">
               פלג המנחה:
-            </h5>   
-            <h5 class="w-50 text-rigth">
+            </h5>
+            <h5 class="w-50 text-center">
               {{getHours(zmanim.PlagHamincha)}}:{{getMinutes(zmanim.PlagHamincha)}}
             </h5>
           </div>
@@ -186,7 +186,7 @@
         }
         return arr
       },
-       options() {
+      options() {
         return this.$store.getters.options
       },
       zmanim() {
@@ -212,5 +212,15 @@
   h5 {
     font-weight: 100;
     font-size: 25px;
+  }
+
+  .col-md-3 div {
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 2px;
+    padding: 5px
+  }
+
+  .col-md-3 div h5 {
+    margin: 0px;
   }
 </style>

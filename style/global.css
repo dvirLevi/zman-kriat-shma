@@ -52,8 +52,12 @@ body {
 }
 
 .router-link-exact-active {
-  color: #a5a5a5;
+  color: #ff6868;
   font-weight: bold;
+}
+
+.router-link-exact-active:hover {
+  color: #ff6868;
 }
 
 .desktop {
@@ -71,7 +75,7 @@ a {
 }
 
 a:hover {
-  color: none;
+  color: inherit;
   text-decoration: none;
   background-color: transparent;
 }

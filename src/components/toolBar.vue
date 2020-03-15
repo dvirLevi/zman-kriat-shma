@@ -56,6 +56,8 @@
 
   .logo img {
     width: 95px;
+    position: relative;
+    z-index: 5;
   }
 
   .logo p {

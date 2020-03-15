@@ -87,7 +87,7 @@ ifMenu: Boolean
 
     .wrap-items {
       width: 20%;
-      background: #ffffff;
+      background: #aad1d1;
       height: 100%;
       flex-direction: column;
     }
@@ -98,6 +98,10 @@ ifMenu: Boolean
       width: 100%;
       border-bottom: solid rgb(0, 0, 0) 1px;
       font-size: 21px;
+    }
+
+    .items-menu:last-child {
+      border-bottom: none;
     }
 
     .icon-cart {

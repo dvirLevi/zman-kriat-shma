@@ -3,15 +3,20 @@
     <div class="row title-row ">
       <div class="col center-all mt-3 mb-3">
         <h1 class="text-center">סוף זמן קריאת שמע וזמני היום</h1>
-        <h3 class="text-center w-100">יום {{dey}} {{Hdate}}</h3>
+        <h3 class="text-center w-100">יום {{dey}} {{Hdate}} <span>{{formatDate}}</span> </h3>
         <h3 class="text-center w-100">פרשת {{mainHDate.getSedra('h')[0]}}</h3>
-        
+        <div class="w-100 center-all">
+          <div class="butt center-all">
+            <i class="far fa-calendar-alt m-2 h3 c-p" for="date-input"></i>
+          <input id="date-input m-2" type="date" @input="selectDate">
+
+          </div>
+        </div>
       </div>
     </div>
     <clock />
     <findLocation />
-    <button ref="addButton">ERTERT</button>
-    <myMap />
+    <myMap v-show="showMap" />
     <div class="row while-row">
       <div class="col-md-6 center-all mga">
         <h4 class="w-100 mt-5 text-center">סוף זמן קריאת שמע לשיטת המגן אברהם</h4>
@@ -46,39 +51,15 @@
     data() {
       return {
         days: ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת", ],
-     
+
       };
     },
-    mounted(){
-let deferredPrompt;
-const addBtn = this.$refs.addButton;
-addBtn.style.display = 'none';
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI to notify the user they can add to home screen
-  addBtn.style.display = 'block';
-
-  addBtn.addEventListener('click', () => {
-    // hide our user interface that shows our A2HS button
-    // console.log(e)
-    addBtn.style.display = 'none';
-    // Show the prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then(() => {
-        // if (choiceResult.outcome === 'accepted') {
-        //   console.log('User accepted the A2HS prompt');
-        // } else {
-        //   console.log('User dismissed the A2HS prompt');
-        // }
-        deferredPrompt = null;
-      });
-  });
-});
+    methods: {
+      selectDate(e) {
+        if (e.target.value !== "") {
+          this.$store.commit('selectDate', e.target.value)
+        }
+      }
     },
     computed: {
       SofZmanShmaMGA() {
@@ -110,60 +91,20 @@ window.addEventListener('beforeinstallprompt', (e) => {
       mainDate() {
         return this.$store.state.mainDate;
       },
-      // getMga() {
-      //   let HalotHashachar = new Date(this.mainHDate.getZemanim().alot_hashachar).getHours() ;
-      //   let MalotHashachar = (new Date(this.mainHDate.getZemanim().alot_hashachar).getMinutes());
-      //   console.log(MalotHashachar)
+      formatDate() {
+        var d = this.mainDate,
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
 
-      //   // let HafterShkia = new Date(this.mainHDate.getZemanim().shkiah).getHours() + 1 ;
-      //   // let MafterShkia = ((new Date(this.mainHDate.getZemanim().shkiah).getMinutes() + 72 - 60) / 12)*3;
-      //   let mmm = (1/100) * (100 / 60) * MalotHashachar;
-      //   let Htime = (((this.Htzeit - HalotHashachar) + mmm ) / 12) * 3; 
-      //   console.log(Htime)
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
 
-      //   let difH = Math.floor(Htime)
-      //   let difM = (Htime - difH) * (60)
-
-      //   let m =  this.Mtzeit + difM;
-
-      //   if(m >= 59){
-      //     let divM = Math.floor(m / 60);
-      //     m = m - (divM * 60);
-
-
-      //     difH = difH + divM
-      //   }
-      //  return HalotHashachar + difH + ":" + m 
-      // },
-      // Htzeit() {
-      //   let m = new Date(this.mainHDate.getZemanim().shkiah).getMinutes() + 18;
-      //   let h = new Date(this.mainHDate.getZemanim().shkiah).getHours();
-      //   if (m >= 59) {
-      //     h = h + 1;
-      //     m = m - 60;
-      //   }
-      //   return h
-      // },
-      // Mtzeit() {
-      //   let m = new Date(this.mainHDate.getZemanim().shkiah).getMinutes() + 18;
-      //   // let h = new Date(this.mainHDate.getZemanim().shkiah).getHours();
-      //   if (m >= 59) {
-      //     // h = h + 1;
-      //     m = m - 60;
-      //   }
-      //   return m
-      // },
-       
-      // mainHebcal() {
-      //   return this.$store.getters.mainHebcal;
-      // },
-      // cities() {
-      //   let sad = new Hebcal.cities.listCities();
-      //   return sad
-      // },
-      // sunrise(){
-      //    return this.mainHDate.sunrise()
-      // },
+        return [day, month, year].join('/');
+      },
+      showMap() {
+        return this.$store.state.showMap;
+      },
       mainHDate() {
         return this.$store.getters.mainHDate;
       },
@@ -177,6 +118,37 @@ window.addEventListener('beforeinstallprompt', (e) => {
     color: #fff;
   }
 
+  .title-row h3 span {
+    font-size: 20px;
+  }
+
+   .butt {
+    background-color: #085f63;
+    border-radius: 5px;
+    color: #fff;
+    /* width: 270px; */
+    font-size: 20px;
+    font-weight: 100;
+    position: relative;
+        padding: 9px;
+    /* margin-top: 2px; */
+  }
+
+  .butt input {
+    border: none;
+    background-color: #085f6300;
+    outline: none;
+    /* padding: 5px; */
+  }
+
+  .butt i {
+     position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+  }
+
+   
   .while-row {
     color: #083538;
     background-color: #facf5a;

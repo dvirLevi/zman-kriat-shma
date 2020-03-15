@@ -12,7 +12,8 @@ export default new Vuex.Store({
       latitude: 31.777980,
       longitude: 35.235353,
       altitude: null
-    }
+    },
+    showMap: false,
   },
   getters: {
     options: state => {
@@ -43,6 +44,15 @@ export default new Vuex.Store({
       state.coordinates.longitude = position.coords.longitude;
       state.coordinates.altitude = position.coords.altitude;
     },
+    ifShowMap(state) {
+      state.showMap = !state.showMap
+    },
+    showMap(state) {
+      state.showMap = true
+    },
+    selectDate(state, date) {
+      state.mainDate = new Date(date)
+    }
   },
   actions: {},
   modules: {}
