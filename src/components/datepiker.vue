@@ -21,7 +21,7 @@
     },
     data() {
       return {
-        textDate: "בחר תאריך"
+        textDate: "בחירת תאריך"
       };
     },
     methods: {
@@ -31,7 +31,7 @@
           this.textDate = this.formatDate(e.target.value);
           this.$store.commit('selectDate', e.target.value)
         } else {
-          this.textDate = "בחר תאריך";
+          this.textDate = "בחירת תאריך";
           this.$store.commit('selectDate', new Date())
         }
       },
