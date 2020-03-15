@@ -58,6 +58,8 @@
       selectDate(e) {
         if (e.target.value !== "") {
           this.$store.commit('selectDate', e.target.value)
+        } else {
+           this.$store.commit('selectDate', new Date())
         }
       }
     },
