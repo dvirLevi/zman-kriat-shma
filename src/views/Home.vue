@@ -4,7 +4,7 @@
       <div class="col center-all mt-3 mb-3">
         <h1 class="text-center">סוף זמן קריאת שמע וזמני היום</h1>
         <h3 class="text-center w-100">יום {{dey}} {{Hdate}} <span>{{formatDate}}</span> </h3>
-        <h3 class="text-center w-100">פרשת {{mainHDate.getSedra('h')[0]}}</h3>
+        <h3 class="text-center w-100">פרשת {{getSedra}}</h3>
         <datepiker />
       </div>
     </div>
@@ -94,6 +94,9 @@
       mainHDate() {
         return this.$store.getters.mainHDate;
       },
+      getSedra() {
+        return this.mainHDate.getSedra('h').join("-")
+      }
     }
   };
 </script>
