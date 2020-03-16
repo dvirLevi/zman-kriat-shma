@@ -21,7 +21,7 @@
               <h5 class="w-50 text-rigth">
                 הדלקת נרות:
               </h5>
-              <h5 class="w-50 text-rigth">
+              <h5 class="w-50 text-center">
                 {{getHours(zmanim.CandleLighting)}}:{{getMinutes(zmanim.CandleLighting)}}
               </h5>
             </div>
@@ -30,7 +30,7 @@
               <h5 class="w-50 text-rigth">
                 הבדלה:
               </h5>
-              <h5 class="w-50 text-rigth">
+              <h5 class="w-50 text-center">
                 {{getHours(zmanim.Tzais)}}:{{getMinutes(zmanim.Tzais)}}
               </h5>
             </div>
