@@ -32,7 +32,6 @@
   import myMap from '@/components/myMap.vue'
   import findLocation from '@/components/findLocation.vue'
   import datepiker from '@/components/datepiker.vue'
-  // import Hebcal from "hebcal";
   import * as KosherZmanim from "kosher-zmanim";
 
   export default {
