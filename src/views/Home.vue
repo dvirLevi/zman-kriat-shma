@@ -32,7 +32,6 @@
   import myMap from '@/components/myMap.vue'
   import findLocation from '@/components/findLocation.vue'
   import datepiker from '@/components/datepiker.vue'
-  import * as KosherZmanim from "kosher-zmanim";
 
   export default {
     name: "Home",
@@ -50,7 +49,7 @@
       };
     },
     methods: {
-       getHours(date) {
+      getHours(date) {
         let h = new Date(date).getHours()
         return (h.toString().length <= 1) ? "0" + h : h;
       },
@@ -60,18 +59,14 @@
       },
     },
     computed: {
-       zmanim() {
-        const zmanim = KosherZmanim.getZmanimJson(this.options);
-        return zmanim.Zmanim
+      zmanim() {
+        return this.$store.getters.mainKosherZmanim
       },
       Hdate() {
         return this.mainHDate.toString('h');
       },
       dey() {
         return this.days[this.mainDate.getDay()]
-      },
-      options() {
-        return this.$store.getters.options
       },
       mainDate() {
         return this.$store.state.mainDate;

@@ -1,10 +1,10 @@
 <template>
   <nav class="row pb-2 pt-2 row-nav">
     <div class="col center-all-between">
-      <div class="logo center-all">
+      <router-link to="/" class="logo center-all">
         <img src="../assets/logo.png" alt="">
         <!-- <p class="mb-0">שמע בזמנה</p> -->
-      </div>
+      </router-link>
       <div class="bar">
         <div class="circle-bar contain" @click="ifMenu = !ifMenu">
           <div class="bar1"></div>

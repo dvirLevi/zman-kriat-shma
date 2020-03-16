@@ -14,9 +14,31 @@
 
         <div class="col-md-3 right-column" v-if="mainHDate.candleLighting() || mainHDate.havdalah() || holidays.length">
           <template v-if="holidays.length">
-            <h5 class="text-rigth" v-for="day in holidays" :key="day">{{day}}</h5>
+            <div class="w-100 center-all" v-for="day in holidays" :key="day">
+            <h5 class="w-100 text-rigth" >{{day}}</h5>
+            </div>
           </template>
+          <template v-if="holidays[1] === 'ערב פסח'">
+            <div class="w-100 center-all">
+              <h5 class="w-50 text-rigth">
+                סוף זמן אכילת חמץ:
+              </h5>
+              <h5 class="w-50 text-center">
+                 {{getHours(zmanim.SofZmanTfilaMGA19Point8Degrees)}}:{{getMinutes(zmanim.SofZmanTfilaMGA19Point8Degrees)}}
+              </h5>
+            </div>
+          </template>
+
           <template v-if="mainHDate.candleLighting() || mainHDate.havdalah()">
+            <div class="w-100 center-all">
+              <h5 class="w-50 text-rigth">
+                הדלקת נרות י-ם:
+              </h5>
+              <h5 class="w-50 text-center">
+                {{CandleLightingJerusalem(getHours(zmanim.Sunset), getMinutes(zmanim.Sunset), 40)}}
+                <!-- {{getHours(zmanim.Sunset)}}:{{getMinutes(zmanim.Sunset)}} -->
+              </h5>
+            </div>
             <div class="w-100 center-all">
               <h5 class="w-50 text-rigth">
                 הדלקת נרות:
@@ -142,7 +164,6 @@
 <script>
   // @ is an alias to /src
   import installApp from '@/components/installApp.vue'
-  import * as KosherZmanim from "kosher-zmanim";
 
   export default {
     name: "dayTime",
@@ -160,26 +181,41 @@
     methods: {
       getHours(date) {
         let h = new Date(date).getHours()
-        return (h.toString().length <= 1) ? "0" + h : h;
+        return this.addZero(h)
       },
       getMinutes(date) {
         let m = new Date(date).getMinutes()
-        return (m.toString().length <= 1) ? "0" + m : m;
+        return this.addZero(m)
       },
+      CandleLightingJerusalem(ho, mi, SubtractionM) {
+        let h = ho;
+        let m = mi - SubtractionM;
+        // let checkM = m / SubtractionM;
+        if (m < 0) {
+          let checkH = Math.floor((SubtractionM - mi) / 60);
+          h = h - (checkH + 1);
+          m = 60 - Math.abs(m);
+        }
+        return this.addZero(h) + ":" + this.addZero(m)
+
+      },
+      addZero(n) {
+        return (n.toString().length <= 1) ? "0" + n : n;
+      }
     },
     computed: {
-      tzeit() {
-        let m = new Date(this.mainHDate.getZemanim().shkiah).getMinutes() + 18;
-        let h = new Date(this.mainHDate.getZemanim().shkiah).getHours();
-        if (m >= 59) {
-          h = h + 1;
-          m = m - 60;
-        }
-        if (m.toString().length < 2) {
-          return h + ":0" + m
-        }
-        return h + ":" + m
-      },
+      // tzeit() {
+      //   let m = new Date(this.mainHDate.getZemanim().shkiah).getMinutes() + 18;
+      //   let h = new Date(this.mainHDate.getZemanim().shkiah).getHours();
+      //   if (m >= 59) {
+      //     h = h + 1;
+      //     m = m - 60;
+      //   }
+      //   if (m.toString().length < 2) {
+      //     return h + ":0" + m
+      //   }
+      //   return h + ":" + m
+      // },
       mainHDate() {
         return this.$store.getters.mainHDate;
       },
@@ -190,13 +226,9 @@
         }
         return arr
       },
-      options() {
-        return this.$store.getters.options
-      },
       zmanim() {
-        const zmanim = KosherZmanim.getZmanimJson(this.options);
-        return zmanim.Zmanim
-      }
+        return this.$store.getters.mainKosherZmanim;
+      },
 
     }
   };

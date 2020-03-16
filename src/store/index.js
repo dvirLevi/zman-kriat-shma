@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Hebcal from "hebcal";
+import * as KosherZmanim from "kosher-zmanim";
 
 Vue.use(Vuex)
 
@@ -36,6 +37,9 @@ export default new Vuex.Store({
       let hebcal = new Hebcal.HDate(state.mainDate);
       hebcal.setLocation(state.coordinates.latitude, state.coordinates.longitude)
       return hebcal
+    },
+    mainKosherZmanim: (state, getters) => {
+      return KosherZmanim.getZmanimJson(getters.options).Zmanim;
     },
   },
   mutations: {
