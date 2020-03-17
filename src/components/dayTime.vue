@@ -27,6 +27,15 @@
                  {{getHours(zmanim.SofZmanTfilaMGA19Point8Degrees)}}:{{getMinutes(zmanim.SofZmanTfilaMGA19Point8Degrees)}}
               </h5>
             </div>
+            
+            <div class="w-100 center-all">
+              <h5 class="w-50 text-rigth">
+                סוף זמן ביעור חמץ:
+              </h5>
+              <h5 class="w-50 text-center">
+                 {{getHours(zmanim.SofZmanBiurChametzMGA16Point1Degrees)}}:{{getMinutes(zmanim.SofZmanBiurChametzMGA16Point1Degrees)}}
+              </h5>
+            </div>
           </template>
 
           <template v-if="mainHDate.candleLighting() || mainHDate.havdalah()">
