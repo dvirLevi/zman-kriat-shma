@@ -89,6 +89,16 @@
 
           <div class="w-100 center-all">
             <h5 class="w-50 text-rigth">
+              זמן טלית ותפילין:
+            </h5>
+            <h5 class="w-50 text-center">
+              {{getHours(zmanim.Misheyakir10Point2Degrees)}}:{{getMinutes(zmanim.Misheyakir10Point2Degrees)}}
+            </h5>
+          </div>
+          
+
+          <div class="w-100 center-all">
+            <h5 class="w-50 text-rigth">
               נץ החמה:
             </h5>
             <h5 class="w-50 text-center">
@@ -96,27 +106,6 @@
             </h5>
           </div>
 
-          <div class="w-100 center-all">
-            <h5 class="w-50 text-rigth">
-              שקיעה:
-            </h5>
-            <h5 class="w-50 text-center">
-              {{getHours(zmanim.Sunset)}}:{{getMinutes(zmanim.Sunset)}}
-            </h5>
-          </div>
-
-          <div class="w-100 center-all">
-            <h5 class="w-50 text-rigth">
-              צאת הכוכבים:
-            </h5>
-            <h5 class="w-50 text-center">
-              {{getHours(zmanim.TzaisGeonim4Point8Degrees)}}:{{getMinutes(zmanim.TzaisGeonim4Point8Degrees)}}
-            </h5>
-          </div>
-
-        </div>
-
-        <div class="col-md-3 right-column">
           <div class="w-100 center-all">
             <h5 class="w-50 text-rigth">
               סוף זמן תפילה מג"א:
@@ -134,6 +123,13 @@
               {{getHours(zmanim.SofZmanTfilaGRA)}}:{{getMinutes(zmanim.SofZmanTfilaGRA)}}
             </h5>
           </div>
+
+          
+
+        </div>
+
+        <div class="col-md-3 right-column">
+          
 
           <div class="w-100 center-all">
             <h5 class="w-50 text-rigth">
@@ -161,6 +157,35 @@
               {{getHours(zmanim.PlagHamincha)}}:{{getMinutes(zmanim.PlagHamincha)}}
             </h5>
           </div>
+
+          <div class="w-100 center-all">
+            <h5 class="w-50 text-rigth">
+              שקיעה:
+            </h5>
+            <h5 class="w-50 text-center">
+              {{getHours(zmanim.Sunset)}}:{{getMinutes(zmanim.Sunset)}}
+            </h5>
+          </div>
+
+          <div class="w-100 center-all">
+            <h5 class="w-50 text-rigth">
+              צאת הכוכבים:
+            </h5>
+            <h5 class="w-50 text-center">
+              {{getHours(zmanim.TzaisGeonim4Point8Degrees)}}:{{getMinutes(zmanim.TzaisGeonim4Point8Degrees)}}
+            </h5>
+          </div>
+
+          <div class="w-100 center-all">
+            <h5 class="w-50 text-rigth">
+              דף יומי:
+            </h5>
+            <h5 class="w-50 text-center">
+              {{mainHDate.dafyomi('h')}}
+            </h5>
+          </div>
+
+
         </div>
       </div>
       <installApp />
