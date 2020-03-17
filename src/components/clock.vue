@@ -111,11 +111,11 @@
 
    .wrap .c6 {
     bottom: 0;
-    right: 45%;  
+    right: 47%;  
   }
 
   .wrap .c3 {
-top: 45%;
+top: 43%;
     right: 0;
   }
 
