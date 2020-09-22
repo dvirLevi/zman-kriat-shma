@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row" v-show="ifShow">
     <div class="col center-all border-top pt-3 mt-3">
       <div ref="addButton" class="butt center-all p-2 c-p ">
         <i class="fas fa-cogs m-2"></i>
@@ -20,14 +20,14 @@
     },
     data() {
       return {
-        ifShow: true
+        ifShow: false
       };
     },
     mounted() {
       let deferredPrompt;
       const addBtn = this.$refs.addButton;
       // addBtn.style.display = 'none';
-      this.ifShow = true;
+      this.ifShow = false;
 
       window.addEventListener('beforeinstallprompt', (e) => {
         // Prevent Chrome 67 and earlier from automatically showing the prompt
